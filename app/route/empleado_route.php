@@ -1,7 +1,7 @@
 <?php
 use App\Lib\Auth,
     App\Lib\Response,
-    App\Validation\TestValidation,
+    App\Validation\EmpleadoValidation,
     App\Middleware\AuthMiddleware;
 
 $app->group('/empleado/', function () {
@@ -20,6 +20,13 @@ $app->group('/empleado/', function () {
 
     });
     $this->post('registrar', function ($req, $res, $args) {
+    	$r = EmpleadoValidation::validate($req->getParsedBody());
+        
+        if(!$r->response){
+            return $res->withHeader('Content-type', 'application/json')
+                       ->withStatus(422)
+                       ->write(json_encode($r->errors));            
+        }
 		return $res->withHeader('Content-type', 'application/json')
     						->write(
     							json_encode($this->model->empleado->registrar($req->getParsedBody()))
