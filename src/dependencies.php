@@ -29,9 +29,10 @@ $container['db'] = function($c){
     return new FluentPDO($pdo); 
 };
 
-// Models
+// Aquí se tienen que dar de alta todos los modelos para su funcionamiento 
 $container['model'] = function($c){
     return (object)[
-        'test' => new App\Model\TestModel($c->db)
+        'test' => new App\Model\TestModel($c->db),
+        'empleado' => new App\Model\EmpleadoModel($c->db)
     ];
 };

@@ -20,16 +20,16 @@ class EmpleadoModel
         $data = $this->db->from($this->table)
                          ->limit($l)
                          ->offset($p)
-                         ->orderBy('id DESC')
+                         ->orderBy('id')
                          ->fetchAll();
 
                          //fetchAll(); cuando se van a retornar varios registros
         
         $total = $this->db->from($this->table)
+                          ->select(null)
                           ->select('COUNT(*) Total')
                           ->fetch()
                           ->Total;
-        
         return [
             'data'  => $data,
             'total' => $total

@@ -66,28 +66,7 @@ INSERT INTO `pedido` (`id`, `Estado_id`, `Cliente`, `Empleado_id`, `Total`, `Fec
 /*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
 
 
--- Dumping structure for table cineworld.pedido_detalle
-CREATE TABLE IF NOT EXISTS `pedido_detalle` (
-  `Pedido_id` int(11) NOT NULL,
-  `Producto_id` int(11) NOT NULL,
-  `Cantidad` int(11) NOT NULL,
-  `PrecioUnitario` decimal(10,2) NOT NULL,
-  `Total` decimal(10,2) NOT NULL,
-  KEY `pedido_detalle_pedido` (`Pedido_id`),
-  KEY `pedido_detalle_producto` (`Producto_id`),
-  CONSTRAINT `pedido_detalle_pedido` FOREIGN KEY (`Pedido_id`) REFERENCES `pedido` (`id`),
-  CONSTRAINT `pedido_detalle_producto` FOREIGN KEY (`Producto_id`) REFERENCES `producto` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
--- Dumping data for table cineworld.pedido_detalle: ~5 rows (approximately)
-/*!40000 ALTER TABLE `pedido_detalle` DISABLE KEYS */;
-INSERT INTO `pedido_detalle` (`Pedido_id`, `Producto_id`, `Cantidad`, `PrecioUnitario`, `Total`) VALUES
-	(1, 1, 1, 15.00, 15.00),
-	(1, 3, 2, 8.00, 16.00),
-	(1, 7, 2, 2.00, 4.00),
-	(2, 8, 1, 5.00, 5.00),
-	(3, 8, 2, 5.00, 10.00);
-/*!40000 ALTER TABLE `pedido_detalle` ENABLE KEYS */;
 
 
 -- Dumping structure for table cineworld.producto
@@ -131,3 +110,25 @@ INSERT INTO `tabla_de_tablas` (`Relacion`, `id`, `Valor`, `Orden`) VALUES
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+-- Dumping structure for table cineworld.pedido_detalle
+CREATE TABLE IF NOT EXISTS `pedido_detalle` (
+  `Pedido_id` int(11) NOT NULL,
+  `Producto_id` int(11) NOT NULL,
+  `Cantidad` int(11) NOT NULL,
+  `PrecioUnitario` decimal(10,2) NOT NULL,
+  `Total` decimal(10,2) NOT NULL,
+  KEY `pedido_detalle_pedido` (`Pedido_id`),
+  KEY `pedido_detalle_producto` (`Producto_id`),
+  CONSTRAINT `pedido_detalle_pedido` FOREIGN KEY (`Pedido_id`) REFERENCES `pedido` (`id`),
+  CONSTRAINT `pedido_detalle_producto` FOREIGN KEY (`Producto_id`) REFERENCES `producto` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- Dumping data for table cineworld.pedido_detalle: ~5 rows (approximately)
+/*!40000 ALTER TABLE `pedido_detalle` DISABLE KEYS */;
+INSERT INTO `pedido_detalle` (`Pedido_id`, `Producto_id`, `Cantidad`, `PrecioUnitario`, `Total`) VALUES
+	(1, 1, 1, 15.00, 15.00),
+	(1, 3, 2, 8.00, 16.00),
+	(1, 7, 2, 2.00, 4.00),
+	(2, 8, 1, 5.00, 5.00),
+	(3, 8, 2, 5.00, 10.00);
+/*!40000 ALTER TABLE `pedido_detalle` ENABLE KEYS */;
