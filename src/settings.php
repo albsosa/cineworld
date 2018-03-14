@@ -19,7 +19,7 @@ return [
         'connectionString' => [
             'dns'  => 'mysql:host=localhost;dbname=cineworld;charset=utf8',
             'user' => 'root',
-            'pass' => ''
+            'pass' => 'password'
         ]
     ],
 ];
